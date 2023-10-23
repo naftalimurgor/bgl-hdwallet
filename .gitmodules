@@ -1,0 +1,3 @@
+[submodule "src/jsbgl"]
+	path = src/jsbgl
+	url = https://github.com/naftalimurgor/jsbgl.git
