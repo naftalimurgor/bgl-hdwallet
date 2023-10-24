@@ -19,7 +19,7 @@ async function main() {
     program
         .name('hdwallet')
         .description(
-            'hdwallet, - create hierarchical deterministic wallet for Bitgesell'
+            'hdwallet, - create hierarchical deterministic wallets for Bitgesell'
         )
         .version('0.1.0');
 
@@ -28,26 +28,37 @@ async function main() {
      * @param network | tesnet or mainnet
      */
     program
-        .command('wallet')
-        .description('Generate a wallet (base58 encoded)')
+        .command('hdwallet')
+        .description('Generate a hierarchical deterministic wallet (base58 encoded)')
         .argument('--network')
-        .action((network) => {
+        .action(async (network) => {
             console.log(network);
             const isTesnet = testnetRegegx.test(network);
             const isMainnet = mainnetRegex.test(network);
             console.log('isMainnet', isMainnet);
 
+            const response = await prompts({
+                type: 'number',
+                name: 'count',
+                message: 'How many wallets do you want to generate?'
+            })
+
+            const { count } = response
+
             if (isMainnet) {
-                // pass in seed phrase option and count(put inside a forloop)
-                const address = new globalThis.Wallet({ from: seedphrase, testnet: false, testnet: false });
-                console.log('Genertated address for Mainnet(base58):', address.address);
-                console.log('Private Key(hex):', address.privateKey.hex);
-                utils.exportToJsonFile(address.address, {
-                    address,
-                    privateKey: address.privateKey.hex,
-                    testnet: address.testnet,
-                    compressed: address.compressed,
-                });
+
+                while (count) {
+                    const hdwallet = new globalThis.Wallet({ from: seedphrase, testnet: false });
+                    console.log('Genertated address for Mainnet(base58):', address.address);
+                    console.log('Private Key(hex):', address.privateKey.hex);
+                    utils.exportToJsonFile(address.address, {
+                        address,
+                        privateKey: address.privateKey.hex,
+                        testnet: address.testnet,
+                        compressed: address.compressed,
+                    });
+                    count--
+                }
             }
         });
     program.parse();
