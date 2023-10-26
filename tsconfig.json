@@ -45,7 +45,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/cmd.js",
+    "src/cli.js",
     "src/utils/index.js"
   ],
   "exclude": [

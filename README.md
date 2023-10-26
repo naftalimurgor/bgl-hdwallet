@@ -39,7 +39,7 @@ Commands:
 To generate Hd Wallet a transaction:
 
 ```sh
-bgl-hdwallet <wallet> <network>
+bgl-hdwallet hdwallet <network>
 ```
 
 ## Contributing
