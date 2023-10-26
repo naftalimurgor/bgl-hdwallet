@@ -1,9 +1,9 @@
-import os from 'os'
-import fs from 'fs';
+const os = require('os')
+const fs = require('fs')
 
 
 const utils = {
-    exportWalletToJsonFile: <U>(fileName: string, options: U) => {
+    exportWalletToJsonFile: (fileName, options) => {
         try {
             const homeDir = os.homedir();
             const fileContents = JSON.stringify(options, null, 2)
@@ -18,4 +18,4 @@ const utils = {
     },
 };
 
-export default utils
+module.exports = utils
