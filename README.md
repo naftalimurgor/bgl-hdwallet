@@ -18,6 +18,20 @@ Basic help and `bgl-hdwallet` version can be checked by simply typing the follow
 bgl-hdwallet --version
 ```
 
+```sh
+Usage: hdwallet [options] [command]
+
+hdwallet, - create hierarchical deterministic wallets for Bitgesell
+
+Options:
+  -V, --version         output the version number
+  -h, --help            display help for command
+
+Commands:
+  hdwallet <--network>  Generate a hierarchical deterministic wallet (base58 encoded)
+  help [command]        display help for command
+```
+
 > Note: Always keep your keys safe. Anyone with access to private keys can drain your Wallet.
 
 ## Generating a Hd Wallet
